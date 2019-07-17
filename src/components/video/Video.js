@@ -1,7 +1,7 @@
 import React from "react"
 import "./_video.scss"
 
-export default function Video({video}) {
+export default function Video({video, date}) {
 
     return (
         <div className = "video-container">
@@ -9,6 +9,7 @@ export default function Video({video}) {
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
             </iframe>
+            <p>{date}</p>
         </div>
 
     );

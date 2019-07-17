@@ -6,14 +6,25 @@ import Main from "./components/main/main";
 import Footer from "./components/footer/Footer";
 function App() {
     const [nasaData, setNasaData] = useState([]);
+    const [nasaTitle, setNasaTitle] = useState([]);
+    const [nasaExplanation, setNasaExplanation] = useState([]);
+    const [nasaDate, setNasaDate] = useState([]);
     useEffect(() => {
        axios
            .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
            .then( response => {
                console.log(response);
                const url =  response.data.url;
+               const title =  response.data.title;
+               const explanation =  response.data.explanation;
+               const date =  response.data.date;
+               setNasaDate(date);
+               setNasaExplanation(explanation);
+               setNasaTitle(title);
                setNasaData(url);
                 console.log("url : ", url)
+                console.log("title : ", title)
+                console.log("date : ", date)
            })
            .catch(error =>{
                console.log("Error:", error);
@@ -26,7 +37,7 @@ function App() {
         app! Have fun 🚀!
       </p>*/}
         <Header/>
-        <Main videoSrc = {nasaData}/>
+        <Main date={nasaDate} text={nasaExplanation} title={nasaTitle} videoSrc = {nasaData}/>
         <Footer/>
     </div>
   );
