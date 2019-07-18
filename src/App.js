@@ -5,9 +5,18 @@ import Header from "./components/header/Header";
 import Main from "./components/main/main";
 import Footer from "./components/footer/Footer";
 function App() {
-    const [nasaData, setNasaData] = useState([]);
-    const [nasaTitle, setNasaTitle] = useState([]);
-    const [nasaExplanation, setNasaExplanation] = useState([]);
+    const aboutNasa = "NASA is led by Administrator Jim Bridenstine," +
+        " NASA's 13th administrator. Before joining NASA," +
+        " Bridenstine served in the U.S. Congress," +
+        " representing Oklahoma’s First Congressional District," +
+        " serving on the Armed Services Committee and the Science," +
+        " Space and Technology Committee. Bridenstine’s " +
+        "career in federal service began in the U.S. Navy," +
+        " flying the E-2C Hawkeye off the USS Abraham Lincoln " +
+        "aircraft carrier. ";
+    const [nasaData, setNasaData] = useState("");
+    const [nasaTitle, setNasaTitle] = useState("");
+    const [nasaExplanation, setNasaExplanation] = useState("");
     const [nasaDate, setNasaDate] = useState([]);
     useEffect(() => {
        axios
@@ -37,7 +46,10 @@ function App() {
         app! Have fun 🚀!
       </p>*/}
         <Header/>
-        <Main date={nasaDate} text={nasaExplanation} title={nasaTitle} videoSrc = {nasaData}/>
+        <Main date={nasaDate}
+              text={nasaExplanation === "" ? aboutNasa : nasaExplanation}
+              title={nasaTitle === "" ? "NASA" : nasaTitle}
+              src = {nasaData}/>
         <Footer/>
     </div>
   );

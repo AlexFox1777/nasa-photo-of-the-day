@@ -1,8 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 
-
-export default function Logo({ logoUrl }){
-    return(
-                <a ><img className="logo" src={logoUrl} ></img></a>
+const LogoStyle = styled.img`
+  width: 70px;
+  height: auto;
+`;
+export default function Logo({logoUrl}) {
+    return (
+        <a><LogoStyle className="logo" src={logoUrl}></LogoStyle></a>
     );
 }
